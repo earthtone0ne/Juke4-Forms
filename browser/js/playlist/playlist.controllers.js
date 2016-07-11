@@ -1,7 +1,10 @@
 'use strict';
 
-juke.controller('PlaylistCtrl', function($scope, $log){
+juke.controller('PlaylistCtrl', function($scope, $log, PlaylistFactory){
    $scope.logIt= function(){
-      $log.log($scope.playlist)
-   }
+      PlaylistFactory.create($scope.playlist);
+   $scope.playlistForm.$setPristine();
+   $scope.playlistForm.$setUntouched();
+   $scope.playlist.name = "";
+   };
 });
