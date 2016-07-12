@@ -22,6 +22,12 @@ juke.factory('PlaylistFactory', function($http, PlayerFactory){
     });
   };
 
+  PlaylistFactory.fetchById = function (id) {
+    return $http.get('/api/playlists/'+ id)
+    .then(function(response){
+      return response.data;
+    });
+  };
 
   return PlaylistFactory;
 });

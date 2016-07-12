@@ -43,7 +43,7 @@
             <h4 class="text-muted">PLAYLISTS</h4>
             <p>
               <p class="playlist-item" ng-repeat="playlist in playlists">
-                <a ui-sref="showPlaylist({listId: playlist.id})">{{playlist.name}}</a>
+                <a ui-sref="showPlaylist({playlistId: playlist.id})">{{playlist.name}}</a>
               </p>
               <a class="btn btn-primary btn-block" ui-sref="newPlaylist"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
             </p>
