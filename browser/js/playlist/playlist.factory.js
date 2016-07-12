@@ -1,18 +1,25 @@
 'use strict';
 
 juke.factory('PlaylistFactory', function($http){
-   var PlaylistFactory = {};
+  var PlaylistFactory = {};
+  var cachedPlaylists = [];
 
-   function getData (res) { return res.data; }
 
-   PlaylistFactory.create = function (data) {
-      $http.post('/api/playlists/', data)
-      .then(getData);
-   };
+  PlaylistFactory.create = function (data) {
+    return $http.post('/api/playlists/', data)
+    .then(function(response){
+      var playlist = response.data;
+      cachedPlaylists.push(playlist);
+      return playlist;
+    });
+  };
 
   PlaylistFactory.fetchAll = function () {
     return $http.get('/api/playlists')
-    .then(getData);
+    .then(function(response){
+      angular.copy(response.data, cachedPlaylists);
+      return cachedPlaylists;
+    });
   };
 
    return PlaylistFactory;
