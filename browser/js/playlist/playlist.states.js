@@ -8,8 +8,15 @@ juke.config(function($stateProvider){
       controller: 'PlaylistCtrl'
 
    });
-   $stateProvider.state('playlists', {
-      url: '/playlists',
-      template: '<p> playlists!</p'
-   })
+
+   $stateProvider.state('showPlaylist', {
+      url: '/playlists/:listId',
+      templateUrl: '/js/playlist/templates/playlist-show.html',
+      resolve: {
+       thePlaylist: function (AlbumFactory, $stateParams) {
+        return AlbumFactory.fetchById($stateParams.albumId);
+        }
+
+      }
+   });
 });

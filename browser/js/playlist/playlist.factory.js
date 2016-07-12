@@ -1,6 +1,6 @@
 'use strict';
 
-juke.factory('PlaylistFactory', function($http){
+juke.factory('PlaylistFactory', function($http, PlayerFactory){
   var PlaylistFactory = {};
   var cachedPlaylists = [];
 
@@ -22,5 +22,6 @@ juke.factory('PlaylistFactory', function($http){
     });
   };
 
-   return PlaylistFactory;
+
+  return PlaylistFactory;
 });
